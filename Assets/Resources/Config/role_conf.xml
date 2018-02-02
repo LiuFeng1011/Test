@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<role_confs>
+<role_conf id="20003" name="box3" description="啊啊啊" file_path="Box003" unlock_type="-1" unlock_price="200" />
+<role_conf id="20004" name="box4" description="啊啊啊" file_path="Box004" unlock_type="1" unlock_price="200" />
+<role_conf id="20005" name="box5" description="啊啊啊" file_path="Box005" unlock_type="1" unlock_price="200" />
+<role_conf id="20006" name="box6" description="啊啊啊" file_path="Box006" unlock_type="1" unlock_price="200" />
+<role_conf id="20007" name="box7" description="啊啊啊" file_path="Box007" unlock_type="1" unlock_price="200" />
+<role_conf id="20008" name="box8" description="啊啊啊" file_path="Box008" unlock_type="1" unlock_price="200" />
+<role_conf id="20009" name="box9" description="啊啊啊" file_path="Box009" unlock_type="1" unlock_price="200" />
+<role_conf id="20010" name="box10" description="啊啊啊" file_path="Box010" unlock_type="1" unlock_price="200" />
+<role_conf id="20011" name="box11" description="啊啊啊" file_path="Box011" unlock_type="1" unlock_price="200" />
+<role_conf id="20012" name="box12" description="啊啊啊" file_path="Box012" unlock_type="1" unlock_price="200" />
+<role_conf id="20013" name="box13" description="啊啊啊" file_path="Box013" unlock_type="1" unlock_price="200" />
+<role_conf id="20014" name="box14" description="啊啊啊" file_path="Box014" unlock_type="1" unlock_price="200" />
+<role_conf id="20015" name="box15" description="啊啊啊" file_path="Box015" unlock_type="1" unlock_price="200" />
+<role_conf id="20016" name="box16" description="啊啊啊" file_path="Box016" unlock_type="1" unlock_price="200" />
+<role_conf id="20017" name="box17" description="啊啊啊" file_path="Box017" unlock_type="1" unlock_price="200" />
+<role_conf id="20018" name="box18" description="啊啊啊" file_path="Box018" unlock_type="1" unlock_price="200" />
+<role_conf id="20019" name="box19" description="啊啊啊" file_path="Box019" unlock_type="1" unlock_price="200" />
+<role_conf id="20020" name="box20" description="啊啊啊" file_path="Box020" unlock_type="1" unlock_price="200" />
+<role_conf id="20021" name="box21" description="啊啊啊" file_path="Box021" unlock_type="1" unlock_price="200" />
+</role_confs>
