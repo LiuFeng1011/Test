@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// author : liufeng
+/// 基本思想就是当列表向上移动时，我们就把超出屏幕上部的item移动到列表末尾位置并重置数据。当列表向下移动时，就把超出屏幕下部的item移动到列表开头。
+/// </summary>
 public class ScrollViewManager : MonoBehaviour {
 	List<ScrollViewItem> itemList = new List<ScrollViewItem>();
 	List<ScrollViewItemData> itemDataList = new List<ScrollViewItemData> ();
@@ -9,7 +13,7 @@ public class ScrollViewManager : MonoBehaviour {
 	UIScrollView sv;
 	UIGrid grid;
 
-	//记录grid上一次的位置，用于判断scrollview的移动方向
+    //记录scrollviet上一次的位置，用于判断scrollview的移动方向
 	float svLastPos = 0;
 
 	//最大y坐标
@@ -23,7 +27,7 @@ public class ScrollViewManager : MonoBehaviour {
 		//初始化测试数据
 
 		for (int i = 0; i < 20; i++) {
-			itemDataList.Add (new ScrollViewItemData (i, i + ""));
+			itemDataList.Add (new ScrollViewItemData (i,"第" + i + "个元素"));
 		}
 
 
@@ -31,7 +35,7 @@ public class ScrollViewManager : MonoBehaviour {
 		grid = transform.Find ("Grid").GetComponent<UIGrid>();
 
 		Vector2 viewsize = transform.GetComponent<UIPanel> ().GetViewSize ();
-		int count = (int)(viewsize.y / grid.cellHeight + 4);
+		int count = (int)(viewsize.y / grid.cellHeight + 2);
 		Debug.Log (count);
 		for (int i = 0; i < count ; i++) {
 			if (itemDataList.Count <= i)
@@ -58,11 +62,10 @@ public class ScrollViewManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (sv.transform.localPosition.y != svLastPos) {
-			bool isup = sv.transform.localPosition.y - svLastPos > 0;
-			Debug.Log (sv.transform.localPosition.y + "///" + svLastPos);
+        float moveDis = sv.transform.localPosition.y - svLastPos;
+        if (Mathf.Abs(moveDis) > 0.05) {
+            bool isup = moveDis > 0;
 			if (isup) {
-				Debug.Log ("up");
 				while (itemList [0].transform.localPosition.y + sv.transform.localPosition.y > maxHeight &&
 				       itemList [itemList.Count - 1].data.index < itemDataList.Count - 1) {
 					ScrollViewItem item = itemList [0];
@@ -75,8 +78,6 @@ public class ScrollViewManager : MonoBehaviour {
 						new Vector3 (0,grid.cellHeight,0);
 				}
 			} else {
-
-				Debug.Log ("down");
 				while (itemList [itemList.Count - 1].transform.localPosition.y + sv.transform.localPosition.y   < minHeight &&
 					itemList [0].data.index > 0) {
 					ScrollViewItem item = itemList [itemList.Count - 1];

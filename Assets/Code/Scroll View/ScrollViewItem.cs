@@ -16,8 +16,6 @@ public class ScrollViewItem : MonoBehaviour {
 		label.text = data.name ;
 	}
 
-
-
 	// Update is called once per frame
 	void Update () {
 		
