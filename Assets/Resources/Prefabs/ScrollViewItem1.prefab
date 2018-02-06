@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114197877390383744}
   - component: {fileID: 114404682993646878}
   m_Layer: 5
-  m_Name: ScrollViewItem
+  m_Name: ScrollViewItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   keepAspectRatio: 0
   aspectRatio: 4.7826085
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
   mFont: {fileID: 0}
   mText: 4e6577204c6162656c
   mFontSize: 46
