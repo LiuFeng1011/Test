@@ -104,7 +104,6 @@ public class ExcelTool {
 				}
 				//Debuger.Log(val);
 			}
-			o.toString();
 
             datalist.Add(o);
 

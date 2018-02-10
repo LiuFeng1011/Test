@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using LitJson;
 public class ReadTest : MonoBehaviour {
 
     //key:表名 val 表数据列表
@@ -19,9 +19,9 @@ public class ReadTest : MonoBehaviour {
 
     void LogData(){
 
-        dic["ExcelATest1.msconfig"][0].toString();
-        dic["ExcelATest2.msconfig"][1].toString();
-        dic["ExcelBTest1.msconfig"][2].toString();
+		Debug.Log(JsonMapper.ToJson(dic["ExcelATest1.msconfig"][0]));
+		Debug.Log(JsonMapper.ToJson(dic["ExcelATest1.msconfig"][1]));
+		Debug.Log(JsonMapper.ToJson(dic["ExcelATest1.msconfig"][2]));
     }
 
     IEnumerator ReadConfigFile(string filename)
