@@ -44,7 +44,7 @@ public class ScriptTexture : MonoBehaviour
                 c.r = Mathf.Lerp(color1.r, color2.r, bezieratVal) * dis;
                 c.g = Mathf.Lerp(color1.g, color2.g, bezieratVal) * dis;
                 c.b = Mathf.Lerp(color1.b, color2.b, bezieratVal) * dis;
-                c.a = 255;
+                c.a = 1f;
 
                 t.SetPixel(w, h,c);
             }

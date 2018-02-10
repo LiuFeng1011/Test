@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeTest : MonoBehaviour {
 
-    const int row = 21, col = 21;
+    const int row = 41, col = 41;
     MazeCreate mazeCreate;
 	// Use this for initialization
     void Start () {
