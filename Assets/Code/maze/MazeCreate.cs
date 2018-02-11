@@ -61,12 +61,12 @@ public class MazeCreate : MonoBehaviour
             }
         }
 
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    for (int j = 0; j < 10; j ++){
-        //        mapList[row / 2 - 2 + i][col / 2 - 2 + j] = (int)PointType.nullpoint;
-        //    }
-        //}
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j ++){
+                mapList[row / 2 - 2 + i][col / 2 - 2 + j] = (int)PointType.nullpoint;
+            }
+        }
 
 
         //起始点
