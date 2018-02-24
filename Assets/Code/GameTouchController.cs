@@ -14,6 +14,14 @@ public enum GameDir
 /// 
 /// </summary>
 public class GameTouchController{
+    public delegate void OnTouchDown(Vector3 pos);
+    public delegate void OnTouchUp(Vector3 pos);
+    public delegate void OnTouchMove(Vector3 pos, Vector3 movedis);
+
+    public OnTouchDown onTouchDown;
+    public OnTouchUp onTouchUp;
+    public OnTouchMove onTouchMove;
+
 	float slideDis = 20;
 
 	public Vector3 m_InputStartVec;
@@ -22,6 +30,7 @@ public class GameTouchController{
 
 	//确保一次操作对应一次动作
 	public bool isStartMouse = false;
+
 
 	public void Init(){
 
@@ -66,9 +75,9 @@ public class GameTouchController{
 		}
 		if (isStartMouse && Input.GetMouseButton(0))
 		{
-			m_InputFinalVec = Input.mousePosition;
+            TouchMove(Input.mousePosition,Input.mousePosition-m_InputFinalVec);
 
-            TouchMove(Input.mousePosition);
+            m_InputFinalVec = Input.mousePosition;
 
 			float vy = m_InputFinalVec.y - m_InputStartVec.y;
 			float vx = m_InputFinalVec.x - m_InputStartVec.x;
@@ -133,19 +142,21 @@ public class GameTouchController{
 
 	//捕捉到动作
 	public void ChangeDirection(GameDir dir){
-        Debug.Log("ChangeDirection : " + dir);
+        //Debug.Log("ChangeDirection : " + dir);
         //send touch dir event
 	}
 
     public void TouchDown(Vector3 p){
-        
+        if (onTouchDown != null) onTouchDown(p);
     }
     public void TouchUp(Vector3 p)
     {
 
+        if (onTouchUp != null) onTouchUp(p);
     }
-    public void TouchMove(Vector3 p)
+    public void TouchMove(Vector3 p, Vector3 dis)
     {
 
+        if (onTouchMove != null) onTouchMove(p, dis);
     }
 }
