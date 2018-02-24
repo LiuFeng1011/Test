@@ -2,37 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AStarTest : MonoBehaviour {
+public class AStarTest : MonoBehaviour
+{
+    const int mapWidth = 20;
+    const int mapHight = 20;
 
-
-    int[,] map = {
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,1,0,0,0,0,0,0},
-        {1,1,1,1,1,1,1,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    };
+    int[,] map = new int[mapWidth, mapHight];
 
 	// Use this for initialization
 	void Start () {
 
-        Vector2 startPosition = new Vector2(4, 2);
-        Vector2 endPosition = new Vector2(7, 13);
+        Vector2 startPosition = new Vector2(Random.Range(0, mapWidth), Random.Range(0, mapHight));
+        Vector2 endPosition = new Vector2(Random.Range(0, mapWidth), Random.Range(0, mapHight));
+
+        for (int i = 0; i < mapWidth;i ++){
+            for (int j = 0; j < mapHight; j++)
+            {
+                //如果是起点或者终点 跳过
+                if((i == (int)startPosition.x && j == (int)startPosition.y) ||
+                   (i == (int)endPosition.x && j == (int)endPosition.x) ){
+                    continue;
+                }
+                if (Random.Range(0f, 1f) < 0.2f){
+                    map[i, j] = 1;
+                }
+            }
+        }
 
 
         //生成地图
         for (int i = 0; i < map.GetLength(0); i ++){
             for (int j = 0; j < map.GetLength(1); j ++){
                 if(map[i,j] == 0){
-                    CreateObj("AstarGround", new Vector2(i, j));
+                    //CreateObj("AstarGround", new Vector2(i, j));
                 }else{
                     CreateObj("AstarWall", new Vector2(i, j));
                 } 
             }
         }
+
         CreateObj("AStarStartPoint", startPosition);
         CreateObj("AStarEndPoint", endPosition);
 

@@ -19,24 +19,24 @@ public class AStar
         public enNodeState state = enNodeState.normal;
     }
 
-    ////附近的格子 8方向
-    //int[,] nearArray= new int[,]{
-    //    {0, 1},   
-    //    {1, 1},   
-    //    {1, 0},   
-    //    {1, -1},  
-    //    {0, -1},  
-    //    {-1, -1}, 
-    //    {-1, 0},  
-    //    {-1, 1}   
-    //};
-    //附近的格子 4方向
-    int[,] nearArray = new int[,]{
-        {0, 1},
-        {1, 0},
-        {0, -1},
-        {-1, 0},
+    //附近的格子 8方向
+    int[,] nearArray= new int[,]{
+        {0, 1},   
+        {1, 1},   
+        {1, 0},   
+        {1, -1},  
+        {0, -1},  
+        {-1, -1}, 
+        {-1, 0},  
+        {-1, 1}   
     };
+    //附近的格子 4方向
+    //int[,] nearArray = new int[,]{
+    //    {0, 1},
+    //    {1, 0},
+    //    {0, -1},
+    //    {-1, 0},
+    //};
     Vector2 startPosition, endPosition;//起始点和结束点
 
     //开放列表，在插入时根据MapNode的f值进行排序，即优先队列
@@ -87,23 +87,29 @@ public class AStar
 
     float GetNodeG(MapNode parent,MapNode node){
         //曼哈顿距离
-        float dis = Mathf.Abs(parent.p.x - node.p.x) + Mathf.Abs(parent.p.y - node.p.y);
+        //float dis = Mathf.Abs(parent.p.x - node.p.x) + Mathf.Abs(parent.p.y - node.p.y);
         //欧式距离
-        //float dis = Vector2.Distance(parent.p, node.p);
+        float dis = Vector2.Distance(parent.p, node.p);
         return parent.g + dis;
     }
 
     float GetNodeH( MapNode node)
     {
         //曼哈顿距离
-        return Mathf.Abs(endPosition.x - node.p.x) + Mathf.Abs(endPosition.y - node.p.y);
+        //return Mathf.Abs(endPosition.x - node.p.x) + Mathf.Abs(endPosition.y - node.p.y);
         //欧式距离
-        //return Vector2.Distance(endPosition,node.p);
+        return Vector2.Distance(endPosition,node.p);
     }
 
-    //开始
+    /// <summary>
+    /// 开始寻路
+    /// </summary>
+    /// <returns>路径点数据，从起始点到结束点路径的有序vector数组.</returns>
+    /// <param name="map">地图数据 二维数组，0为可移动路径，1为不可移动路径.</param>
+    /// <param name="startPosition">开始位置.</param>
+    /// <param name="endPosition">结束位置.</param>
     public List<Vector2> StratAStar(int[,] map,Vector2 startPosition,Vector2 endPosition){
-        
+
         mapList = new MapNode[map.GetLength(0),map.GetLength(1)];
 
         //附近可移动点的数量
@@ -122,9 +128,8 @@ public class AStar
         while(openList.Count > 0){
             //取出开启列表中f值最低的节点，由于我们在向开启列表中添加节点时已经进行了排序，所以这里直接取第0个值即可
             MapNode node = openList[0];
-
             //如果node为目标点则结束寻找
-            if(Vector2.Distance(node.p,endPosition) <= 0){
+            if(node.p.x == endPosition.x && node.p.y == endPosition.y){
                 endNode = node;
                 break;
             }
@@ -167,6 +172,8 @@ public class AStar
 
                         //重新对开放列表排序
                         openList.Remove(nearNode);
+                    }else{
+                        continue;
                     }
                 }else{
                     //创建节点
