@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65907991027044514}
   - component: {fileID: 23471599656399650}
   m_Layer: 0
-  m_Name: AstarCube
+  m_Name: AstarWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

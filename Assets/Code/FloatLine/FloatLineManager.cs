@@ -41,9 +41,13 @@ public class FloatLineManager : MonoBehaviour {
         time += Time.deltaTime*10;
         Vector3[] vs = new Vector3[objList.Count];
         for (int i = 0; i < objList.Count; i ++){
-            float x = i * Mathf.Sin(time + i) * 0.01f;
+            //float x = i * Mathf.Sin(time + i) * 0.01f;
+
+            float x = i * 0.3f ;
+            float rate = Mathf.Min((float)x / 3.1415f, 1.0f) * 0.2f;
+            float y = Mathf.Sin(x+ time) * rate;
             Vector3 newpos = new Vector3(objList[i].transform.position.x,
-                                         objList[i].transform.position.y - x,
+                                         objList[i].transform.position.y - y,
                                          objList[i].transform.position.z);
             
             vs[i] = newpos;
